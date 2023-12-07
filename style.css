@@ -1,0 +1,386 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  line-height: 1.5;
+  font-family: "Ubuntu", sans-serif;
+}
+
+p {
+  color: hsl(231, 11%, 63%);
+}
+
+h3,
+h1,
+label {
+  color: hsl(213, 96%, 18%);
+}
+
+.yearly {
+  display: none;
+}
+
+body {
+  font-size: 16px;
+  height: 100vh;
+  position: relative;
+  background-color: hsl(217, 100%, 97%);
+}
+
+.container {
+  width: 100%;
+  max-width: 1080px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+.container .card {
+  position: absolute;
+  top: 100px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 95%;
+  padding: 30px;
+  background-color: hsl(0, 0%, 100%);
+  border-radius: 15px;
+  z-index: 2;
+  display: none;
+}
+.container .card.active {
+  display: flex;
+  flex-direction: column;
+}
+
+.stepBox {
+  display: flex;
+  justify-content: center;
+  padding-top: 30px;
+  gap: 10px;
+  width: 100%;
+  height: 172px;
+  background-image: url("./images/bg-sidebar-mobile.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  z-index: 2;
+}
+.stepBox .mobile {
+  display: none;
+}
+.stepBox .step .circle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 2.5em;
+  height: 2.5em;
+  font-weight: 500;
+  color: hsl(0, 0%, 100%);
+  border: 2px solid hsl(228, 100%, 84%);
+  border-radius: 50%;
+  transition: all 0.3s;
+}
+.stepBox .step.current .circle {
+  background: hsl(228, 100%, 84%);
+  color: hsl(213, 96%, 18%);
+  font-weight: bold;
+  transition: all 0.3s;
+}
+
+form {
+  margin-top: 20px;
+}
+form .inputBox {
+  display: flex;
+  flex-wrap: wrap;
+}
+form .inputBox input {
+  width: 100%;
+  padding: 10px;
+  margin: 2px 0 12px 0;
+  border: 1px solid hsl(231, 11%, 63%);
+  border-radius: 5px;
+  font-weight: 500;
+  color: hsl(213, 96%, 18%);
+}
+form .inputBox .verified {
+  display: none;
+}
+form .inputBox input:focus {
+  outline: 1px solid hsl(243, 100%, 62%);
+  border-color: #fff !important;
+}
+form .inputBox .verified {
+  margin-left: auto;
+  color: hsl(354, 84%, 57%);
+  font-weight: 500;
+}
+
+.optionBox {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+}
+.optionBox .option {
+  display: flex;
+  align-items: center;
+  gap: 0.7em;
+  width: 100%;
+  margin: 10px 0;
+  padding: 15px;
+  border: 1px solid hsl(229, 24%, 87%);
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.optionBox .option .info {
+  color: hsl(213, 96%, 18%);
+}
+.optionBox .option:hover,
+.optionBox .option.active {
+  border: 1px solid hsl(243, 100%, 62%);
+}
+.optionBox .option.active {
+  background-color: hsl(231, 100%, 99%);
+}
+.optionBox .option input[type=checkbox] {
+  width: 20px;
+  height: 20px;
+}
+.optionBox .option input[type=checkbox]:hover {
+  cursor: pointer;
+}
+.optionBox .option .textBox h3 {
+  font-size: 0.9em;
+}
+.optionBox .option .textBox p {
+  font-size: 0.8em;
+}
+.optionBox .option .priceOption {
+  margin-left: auto;
+  font-size: 0.7em;
+  color: hsl(243, 100%, 62%);
+  font-weight: bold;
+}
+
+.payment-mode {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2em;
+  width: 100%;
+  padding: 10px 0;
+  margin-top: 30px;
+  background-color: #f5f9ff;
+  /* Hide default HTML checkbox */
+  /* The slider */
+}
+.payment-mode p {
+  font-weight: bold;
+}
+.payment-mode .switch {
+  font-size: 12px;
+  position: relative;
+  display: inline-block;
+  width: 47px;
+  height: 25px;
+}
+.payment-mode .switch input {
+  opacity: 1;
+  width: 0;
+  height: 0;
+}
+.payment-mode .slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0px;
+  background: hsl(213, 96%, 18%);
+  transition: 0.4s;
+  border-radius: 30px;
+  border: 1px solid #ccc;
+}
+.payment-mode .slider:before {
+  position: absolute;
+  content: "";
+  height: 1.5em;
+  width: 1.5em;
+  border-radius: 16px;
+  left: 5px;
+  top: 2px;
+  bottom: 0;
+  background-color: hsl(0, 0%, 100%);
+  box-shadow: 0 2px 5px #999999;
+  transition: 0.4s;
+}
+.payment-mode input:checked + .slider {
+  background-color: hsl(213, 96%, 18%);
+  border: 1px solid transparent;
+}
+.payment-mode input:checked + .slider:before {
+  transform: translateX(1.5em);
+}
+
+.summary .summaryBox [class*=summary_],
+.summary .billBox {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background-color: hsl(231, 100%, 99%);
+  border-radius: 5px;
+}
+.summary .summaryBox .summary_1 {
+  position: relative;
+  margin-top: 20px;
+}
+.summary .summaryBox .summary_1 .planOptionTitle,
+.summary .summaryBox .summary_1 .planOptionPrice {
+  color: hsl(213, 96%, 18%);
+  font-weight: bold;
+}
+.summary .summaryBox .summary_1 p a {
+  color: hsl(231, 11%, 63%);
+  transition: 0.3s;
+}
+.summary .summaryBox .summary_1 p a:hover {
+  color: hsl(243, 100%, 62%);
+}
+.summary .summaryBox .summary_1::after {
+  position: absolute;
+  content: " ";
+  display: block;
+  width: calc(100% - 20px);
+  height: 2px;
+  background-color: hsl(229, 24%, 87%);
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.summary .billBox {
+  margin: 10px 0;
+  width: 100%;
+  background-color: hsl(0, 0%, 100%);
+}
+.summary .billBox .totalPrice {
+  margin-left: auto;
+  color: hsl(243, 100%, 62%);
+  font-weight: bold;
+}
+.summary .addOptionPrice {
+  color: hsl(213, 96%, 18%);
+  font-weight: 500;
+}
+
+.last {
+  align-items: center;
+  justify-content: center;
+  row-gap: 2em;
+  padding: 80px 25px;
+}
+.last p {
+  text-align: center;
+  line-height: 1.5;
+}
+
+.footer {
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 20px 10px;
+  width: 100%;
+  background-color: hsl(0, 0%, 100%);
+}
+.footer button {
+  padding: 0.8em 0.8em;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.footer .next {
+  margin-left: auto;
+  background-color: hsl(213, 96%, 18%);
+  color: hsl(0, 0%, 100%);
+}
+.footer .next.confirm {
+  background-color: hsl(243, 100%, 62%);
+}
+.footer .next:hover {
+  opacity: 0.8;
+}
+.footer .previous {
+  background-color: transparent;
+  color: hsl(231, 11%, 63%);
+  transition: 0.3s;
+}
+.footer .previous:hover {
+  color: hsl(213, 96%, 18%);
+}
+
+@media only screen and (min-width: 768px) {
+  body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .container {
+    display: grid;
+    grid-template-columns: 273px 1fr 1fr;
+    grid-template-areas: "stepBox card card" "stepBox card card" "stepBox footer footer";
+    gap: 2em;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: hsl(0, 0%, 100%);
+    border-radius: 20px;
+  }
+  .container .card {
+    grid-area: card;
+    position: static;
+    left: 0;
+    transform: none;
+  }
+  .stepBox {
+    grid-area: stepBox;
+    background: url("./images/bg-sidebar-desktop.svg");
+    min-height: 568px;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 40px;
+    row-gap: 2em;
+  }
+  .stepBox .step .mobile {
+    display: block;
+  }
+  .stepBox .step {
+    display: flex;
+    align-items: center;
+    gap: 1em;
+  }
+  .stepBox .step h3 {
+    color: hsl(0, 0%, 100%);
+  }
+  .plan .optionBox {
+    flex-direction: row;
+    gap: 1em;
+  }
+  .plan .optionBox .option {
+    flex-direction: column;
+    row-gap: 6em;
+    align-items: flex-start;
+    padding: 20px;
+  }
+  .footer {
+    grid-area: footer;
+    position: static;
+    width: 95%;
+    padding: 0;
+  }
+}
+
+/*# sourceMappingURL=style.css.map */

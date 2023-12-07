@@ -1,0 +1,449 @@
+// ### Primary
+$Marine_blue: hsl(213, 96%, 18%);
+$Purplish_blue: hsl(243, 100%, 62%);
+$Pastel_blue: hsl(228, 100%, 84%);
+$Light_blue: hsl(206, 94%, 87%);
+$Strawberry_red: hsl(354, 84%, 57%);
+
+// ### Neutral
+$Cool_gray: hsl(231, 11%, 63%);
+$Light_gray: hsl(229, 24%, 87%);
+$Magnolia: hsl(217, 100%, 97%);
+$Alabaster: hsl(231, 100%, 99%);
+$White: hsl(0, 0%, 100%);
+$Black: hsl(0, 0%, 0%);
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  line-height: 1.5;
+  font-family: "Ubuntu", sans-serif;
+}
+
+p {
+  color: $Cool_gray;
+}
+h3,
+h1,
+label {
+  color: $Marine_blue;
+}
+
+.yearly {
+  display: none;
+}
+
+body {
+  font-size: 16px;
+  height: 100vh;
+  position: relative;
+  background-color: $Magnolia;
+}
+
+.container {
+  width: 100%;
+  max-width: 1080px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+
+  .card {
+    position: absolute;
+    top: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 95%;
+    padding: 30px;
+    background-color: $White;
+    border-radius: 15px;
+    z-index: 2;
+    display: none;
+  }
+
+  .card.active{
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.stepBox {
+  display: flex;
+  justify-content: center;
+  padding-top: 30px;
+  gap: 10px;
+  width: 100%;
+  height: 172px;
+  background-image: url("./images/bg-sidebar-mobile.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  z-index: 2;
+
+  .mobile {
+    display: none;
+  }
+
+  .step .circle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 2.5em;
+    height: 2.5em;
+    font-weight: 500;
+    color: $White;
+    border: 2px solid $Pastel_blue;
+    border-radius: 50%;
+    transition: all .3s;
+  }
+
+  .step.current .circle {
+    background: $Pastel_blue;
+    color: $Marine_blue;
+    font-weight: bold;
+    transition: all .3s;
+  }
+}
+
+form {
+  margin-top: 20px;
+
+  .inputBox {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .inputBox input {
+    width: 100%;
+    padding: 10px;
+    margin: 2px 0 12px 0;
+    border: 1px solid $Cool_gray;
+    border-radius: 5px;
+    font-weight: 500;
+    color: $Marine_blue;
+  }
+
+  .inputBox .verified{
+    display: none;
+  }
+
+  .inputBox input:focus {
+    outline: 1px solid $Purplish_blue;
+    border-color: #fff !important;
+  }
+
+  .inputBox .verified {
+    margin-left: auto;
+    color: $Strawberry_red;
+    font-weight: 500;
+  }
+}
+
+.optionBox {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+
+  .option {
+    display: flex;
+    align-items: center;
+    gap: 0.7em;
+    width: 100%;
+    margin: 10px 0;
+    padding: 15px;
+    border: 1px solid $Light_gray;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+
+  .option .info {
+    color: $Marine_blue;
+  }
+
+  .option:hover,
+  .option.active {
+    border: 1px solid $Purplish_blue;
+  }
+
+  .option.active {
+    background-color:$Alabaster;
+  }
+
+  .option input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+  }
+
+  .option input[type="checkbox"]:hover {
+    cursor: pointer;
+  }
+
+  .option .textBox h3 {
+    font-size: 0.9em;
+  }
+
+  .option .textBox p {
+    font-size: 0.8em;
+  }
+
+  .option .priceOption {
+    margin-left: auto;
+    font-size: 0.7em;
+    color: $Purplish_blue;
+    font-weight: bold;
+  }
+}
+
+.payment-mode {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2em;
+  width: 100%;
+  padding: 10px 0;
+  margin-top: 30px;
+  background-color: #f5f9ff;
+
+  p {
+    font-weight: bold;
+  }
+
+  .switch {
+    font-size: 12px;
+    position: relative;
+    display: inline-block;
+    width: 47px;
+    height: 25px;
+  }
+
+  /* Hide default HTML checkbox */
+  .switch input {
+    opacity: 1;
+    width: 0;
+    height: 0;
+  }
+
+  /* The slider */
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0px;
+    background: $Marine_blue;
+    transition: 0.4s;
+    border-radius: 30px;
+    border: 1px solid #ccc;
+  }
+
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 1.5em;
+    width: 1.5em;
+    border-radius: 16px;
+    left: 5px;
+    top: 2px;
+    bottom: 0;
+    background-color: $White;
+    box-shadow: 0 2px 5px #999999;
+    transition: 0.4s;
+  }
+
+  input:checked + .slider {
+    background-color: $Marine_blue;
+    border: 1px solid transparent;
+  }
+
+  input:checked + .slider:before {
+    transform: translateX(1.5em);
+  }
+}
+
+.summary {
+  .summaryBox [class*="summary_"],
+  .billBox {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: $Alabaster;
+    border-radius: 5px;
+  }
+  .summaryBox .summary_1 {
+    position: relative;
+    margin-top: 20px;
+  }
+
+  .summaryBox .summary_1 .planOptionTitle,
+  .summaryBox .summary_1 .planOptionPrice {
+    color: $Marine_blue;
+    font-weight: bold;
+  }
+
+  .summaryBox .summary_1 p a {
+    color: $Cool_gray;
+    transition: 0.3s;
+  }
+
+  .summaryBox .summary_1 p a:hover {
+    color: $Purplish_blue;
+  }
+  .summaryBox .summary_1::after {
+    position: absolute;
+    content: " ";
+    display: block;
+    width: calc(100% - 20px);
+    height: 2px;
+    background-color: $Light_gray;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .billBox {
+    margin: 10px 0;
+    width: 100%;
+    background-color: $White;
+  }
+
+  .billBox .totalPrice {
+    margin-left: auto;
+    color: $Purplish_blue;
+    font-weight: bold;
+  }
+
+  .addOptionPrice {
+    color: $Marine_blue;
+    font-weight: 500;
+  }
+}
+
+.last {
+  align-items: center;
+  justify-content: center;
+  row-gap: 2em;
+  padding: 80px 25px;
+
+  p {
+    text-align: center;
+    line-height: 1.5;
+  }
+}
+
+.footer {
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 20px 10px;
+  width: 100%;
+  background-color: $White;
+
+  button {
+    padding: 0.8em 0.8em;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  .next {
+    margin-left: auto;
+    background-color: $Marine_blue;
+    color: $White;
+  }
+
+  .next.confirm{
+    background-color: $Purplish_blue;
+  }
+
+  .next:hover {
+    opacity: 0.8;
+  }
+
+  .previous {
+    background-color: transparent;
+    color: $Cool_gray;
+    transition: 0.3s;
+  }
+
+  .previous:hover {
+    color: $Marine_blue;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .container {
+    display: grid;
+    grid-template-columns: 273px 1fr 1fr;
+    grid-template-areas:
+      "stepBox card card"
+      "stepBox card card"
+      "stepBox footer footer";
+      gap: 2em;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: $White;
+    border-radius: 20px;
+
+    .card {
+      grid-area: card;
+      position: static;
+      left: 0;
+      transform: none;
+    }
+  }
+
+  .stepBox {
+    grid-area: stepBox;
+    background: url("./images/bg-sidebar-desktop.svg");
+    min-height: 568px;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 40px;
+    row-gap: 2em;
+
+    .step .mobile {
+      display: block;
+    }
+    .step {
+      display: flex;
+      align-items: center;
+      gap: 1em;
+    }
+
+    .step h3 {
+      color: $White;
+    }
+  }
+
+  .plan .optionBox {
+    flex-direction: row;
+    gap: 1em;
+
+    .option {
+      flex-direction: column;
+      row-gap: 6em;
+      align-items: flex-start;
+      padding: 20px;
+    }
+  }
+
+  .footer {
+    grid-area: footer;
+    position: static;
+    width: 95%;
+    padding: 0;
+  }
+}

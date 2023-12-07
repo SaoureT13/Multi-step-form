@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+  <link rel="stylesheet" href="./style.css">
+  
+  <title>Frontend Mentor | Multi-step form</title>
+</head>
+<body>
+  <script type="module" src="./main.js" defer></script>
+
+  <div class="container">
+
+    <div class="stepBox">
+      <div class="step current">
+        <div class="circle">1</div>
+        <div class="step-info mobile">
+          <p>STEP 1</p>
+          <h3>YOUR INFO</h3>
+        </div>
+      </div>
+      <div class="step">
+        <div class="circle">2</div>
+        <div class="step-info mobile">
+          <p>STEP 2</p>
+          <h3>SELECT PLAN</h3>
+        </div>
+      </div>
+      <div class="step">
+        <div class="circle">3</div>
+        <div class="step-info mobile">
+          <p>STEP 3</p>
+          <h3>ADD-ONS</h3>
+        </div>
+      </div>
+      <div class="step">
+        <div class="circle">4</div>
+        <div class="step-info mobile">
+          <p>STEP 4</p>
+          <h3>SUMMARY</h3>
+        </div>
+      </div>
+    </div>
+
+    <div class="card info active">
+      <div class="content-text">
+        <h1>Personnal info</h1>
+        <p>Please provide your name, email address, and phone number.</p>
+      </div>
+      <form action="#">
+        <div class="inputBox">
+          <label for="name">Name</label>
+          <p class="verified">This field is required</p>
+          <input type="text" name="userName" id="name" class="vide" placeholder="e.g. Stephen King">
+        </div>
+        <div class="inputBox">
+          <label for="mail">Email Address</label> <label for="mail"></label>
+          <p class="verified">This field is required</p>
+          <input type="email" name="userMail" id="mail" class="vide" placeholder="e.g. stephenking@lorem.com">
+        </div>
+        <div class="inputBox">
+          <label for="number">Phone Number</label>
+          <p class="verified">This field is required</p>
+          <input type="text" name="userNumber" id="number" class="vide" placeholder="e.g. +1 234 567 890">
+        </div>
+      </form>
+    </div>
+
+    <div class="card plan">
+      <div class="content-text">
+        <h1>Select your plan</h1>
+        <p>You have the option of monthly or yearly billing.</p>
+      </div>
+      <div class="optionBox">
+        <div class="option">
+          <img src="./images/icon-arcade.svg" alt="arcade">
+          <div class="textBox">
+            <h3 class="titleOption">Arcade</h3>
+            <p class="priceOption monthly">$9/mo</p>
+            <p class="priceOption yearly">$90/yr</p>
+            <p class="info yearly">2 months free</p>
+          </div>
+        </div>
+        <div class="option">
+          <img src="./images/icon-advanced.svg" alt="advanced">
+          <div class="textBox">
+            <h3 class="titleOption"> Advanced</h3>
+            <p class="priceOption monthly">$12/mo</p>
+            <p class="priceOption yearly">$120/yr</p>
+            <p class="info yearly">2 months free</p>
+          </div>
+        </div>
+        <div class="option">
+          <img src="./images/icon-pro.svg" alt="arcade">
+          <div class="textBox">
+            <h3 class="titleOption">Pro</h3>
+            <p class="priceOption monthly">$15/mo</p>
+            <p class="priceOption yearly">$120/yr</p>
+            <p class="info yearly">2 months free</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="payment-mode">
+        <p>Monthly</p>
+        <label class="switch">
+          <input type="checkbox" id="checkbox">
+          <span class="slider"></span>
+        </label>
+        <p>Yearly</p>
+      </div>
+    </div>
+
+    <div class="card add_ons">
+      <div class="content-text">
+        <h1>Pick add-ons</h1>
+        <p>Add-ons help enhance your gaming experience.</p>
+      </div>
+      <div class="optionBox">
+        <div class="option">
+          <input type="checkbox" class="selected1">
+          <div class="textBox">
+            <h3 class="titleOption">Online service</h3>
+            <p class="detailOption">Access to multiplayer games</p>
+          </div>
+          <p class="priceOption monthly">+$1/mo</p>
+          <p class="priceOption yearly">+$10/yr</p>
+        </div>
+
+        <div class="option">
+          <input type="checkbox" class="selected2">
+          <div class="textBox">
+            <h3 class="titleOption">Larger storage</h3>
+            <p class="detailOption">Extra 1TB of cloud save</p>
+          </div>
+          <p class="priceOption monthly">+$2/mo</p>
+          <p class="priceOption yearly">+$20/yr</p>
+        </div>
+
+        <div class="option">
+          <input type="checkbox" class="selected3">
+          <div class="textBox">
+            <h3 class="titleOption">Customizable Profile</h3>
+            <p class="detailOption">Custom theme on your profile</p>
+          </div>
+          <p class="priceOption monthly">+$2/mo</p>
+          <p class="priceOption yearly">+$20/yr</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card summary">
+      <div class="content-text">
+        <h1>Finishing up</h1>
+        <p>Double-check everything looks OK before confirming.</p>
+      </div>
+
+      <template id="Recap">
+        <div class="summaryBox">
+          <div class="summary_1">
+            <div>
+              <h3 class="planOptionTitle">lorem<span class="planOptionMode">lorem</span>
+              </h3>
+              <p><a href="#" class="change">Change</a></p>
+            </div>
+            <h3 class="planOptionPrice">lorem</h3>
+          </div>
+
+          <div class="summary_2">
+            <p class="addOptionTitle">lorem</p>
+            <p class="addOptionPrice"></p>
+          </div>
+
+          <div class="summary_2">
+            <p class="addOptionTitle">lorem</p>
+            <p class="addOptionPrice"></p>
+          </div>
+
+          <div class="summary_2">
+            <p class="addOptionTitle">lorem</p>
+            <p class="addOptionPrice">lorem</p>
+          </div>
+        </div>
+        <div class="billBox">
+          <p class="totalPer">lorem</p>
+          <p class="totalPrice">lorem</p>
+        </div>
+      </template>
+    </div>
+
+    <div class="card last">
+      <img src="./images/icon-thank-you.svg" alt="">
+      <h1>Thank you!</h1>
+      <p>
+        Thanks for confirming your subscription! We hope you have fun
+        using our platform. If you ever need support, please feel free
+        to email us at support@loremgaming.com.
+      </p>
+    </div>
+
+    <div class="footer">
+      <button class="previous">Go Back</button>
+      <button class="next">Next Step</button>
+    </div>
+  </div>
+  
+  <!-- <div class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+    Coded by <a href="#">Your Name Here</a>.
+  </div> -->
+</body>
+</html>
